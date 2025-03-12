@@ -36,7 +36,7 @@
               },
               "body": {
                 "stroke": "red",
-                "strokeWidth": 1.5,
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -142,7 +142,7 @@
                   "severity": "High",
                   "type": "Spoofing",
                   "description": "Threat actors impersonate legitimate users to gain unauthorized\naccess.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "- Use multi-factor authentication (MFA).\n- Implement CAPTCHA.\n- Update authentication tokens regularly.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -150,7 +150,7 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 3,
                 "repudiation": 0
               }
             }
@@ -878,7 +878,7 @@
                   "severity": "High",
                   "type": "Tampering",
                   "description": "Attackers modify or manipulate stored data.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "- Use encryption for stored data.\n- Apply integrity checks.\n- Restrict access to authorized personnel only.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 5,
@@ -886,7 +886,7 @@
                 }
               ],
               "threatFrequency": {
-                "tampering": 1,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0
@@ -1119,56 +1119,6 @@
               {
                 "x": -150,
                 "y": 100
-              }
-            ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": ""
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "HTTP Request",
-              "description": "",
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": []
-            },
-            "labels": [
-              "HTTP Request"
-            ],
-            "id": "218b4a39-2fe4-4ff8-812d-47857e3ba576",
-            "source": {
-              "cell": "12bf5f29-d723-463b-b3e9-f7a6eed3394b",
-              "port": "e47280b2-a55b-4f9e-b6ce-036a2f87123e"
-            },
-            "target": {
-              "cell": "fce88ae9-94c8-42cd-b743-2b7d83e7611a",
-              "port": "94f98665-7b6b-4722-9a47-6908affae2df"
-            },
-            "vertices": [
-              {
-                "x": -180,
-                "y": 140
               }
             ]
           },
@@ -1701,6 +1651,76 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
+              "name": "HTTP Request",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "6e0e1d84-1019-456d-8626-3f3e088ae767",
+                  "title": "HTTP Request Manipulation",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "Attackers manipulate HTTP requests.",
+                  "mitigation": "- Apply input validation and output encoding.\n- Use Web Application Firewall (WAF).\n- Follow secure coding practices.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
+            },
+            "labels": [
+              "HTTP Request"
+            ],
+            "id": "218b4a39-2fe4-4ff8-812d-47857e3ba576",
+            "source": {
+              "cell": "12bf5f29-d723-463b-b3e9-f7a6eed3394b",
+              "port": "e47280b2-a55b-4f9e-b6ce-036a2f87123e"
+            },
+            "target": {
+              "cell": "fce88ae9-94c8-42cd-b743-2b7d83e7611a",
+              "port": "94f98665-7b6b-4722-9a47-6908affae2df"
+            },
+            "vertices": [
+              {
+                "x": -180,
+                "y": 140
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
               "name": "HTTP Response",
               "description": "",
               "outOfScope": false,
@@ -1718,7 +1738,7 @@
                   "severity": "Medium",
                   "type": "Tampering",
                   "description": "Attackers manipulate HTTP responses.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "- Apply input validation and output encoding.\n- Use Web Application Firewall (WAF).\n- Follow secure coding practices.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 2,
@@ -1726,7 +1746,7 @@
                 }
               ],
               "threatFrequency": {
-                "tampering": 2,
+                "tampering": 3,
                 "informationDisclosure": 0,
                 "denialOfService": 0
               }
@@ -1788,7 +1808,7 @@
                   "severity": "High",
                   "type": "Information disclosure",
                   "description": "Sensitive data is intercepted or exposed during transmission.",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "mitigation": "- Use encryption for data in transit.\n- Avoid sending sensitive data in URL parameters.\n- Restrict access to authorized personnel only.",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
@@ -1797,7 +1817,7 @@
               ],
               "threatFrequency": {
                 "tampering": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0
               }
             },
@@ -1945,6 +1965,6 @@
     ],
     "diagramTop": 2,
     "reviewer": "Cybersecurity Architect",
-    "threatTop": 5
+    "threatTop": 6
   }
 }
